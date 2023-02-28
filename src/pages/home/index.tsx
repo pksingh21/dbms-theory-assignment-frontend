@@ -67,7 +67,7 @@ export default function ResponsiveDrawer(props: Props) {
       <Divider />
       <List>
         {[
-          "Find Minimal Cover",
+          "Find Minimal Cover/Find 3NF Other Method",
           "Find Candidate Keys",
           "Check Normal Form",
           "Normalize to 2NF",

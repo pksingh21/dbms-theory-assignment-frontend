@@ -40,11 +40,35 @@ export function CenteredGrid2(
   heading1: string,
   heading2: string
 ) {
+  const setForLeft = new Set<string>();
+  completeData.left.forEach((element) => {
+    setForLeft.add(element);
+  });
+  completeData.right.forEach((element) => {
+    setForLeft.add(element);
+  });
+  console.log(setForLeft);
+  const listv1 = [] as string[];
+  for (const item of setForLeft.values()) {
+    listv1.push(item);
+  }
+  console.log(listv1);
+  const extraHeading = listv1.map((elem) => {
+    <Chip label={elem} />;
+  });
+  console.log(extraHeading);
   return (
     <Grid container spacing={2} justifyContent="center">
       <Grid item xs={12}>
         <Typography color="primary" variant="h6" align="center">
-          {heading1}
+          <>
+            {heading1} + {`Attribute set : `}
+            <>
+              {listv1.map((elem) => (
+                <Chip label={elem} />
+              ))}
+            </>
+          </>
         </Typography>
       </Grid>
       <Grid item xs={12}>
@@ -212,9 +236,9 @@ function displayNormalForms(props: Props) {
           </Typography>
         </>
       )}
-      {props.query === "Find Minimal Cover" &&
+      {props.query === "Find Minimal Cover/Find 3NF Other Method" &&
         props.normalFormData.minimal_cover?.map((fd) => (
-          <>{CenteredGrid2(fd, "Minimal Cover", "")}</>
+          <>{CenteredGrid2(fd, "Minimal Cover", "3NF Other Form FD")}</>
         ))}
     </>
   );
