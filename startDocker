@@ -1,0 +1,1 @@
+docker run --rm -it -d  -p  3000:3000 --name dbms-theory-frontend dbms-theory-front-end:v1
