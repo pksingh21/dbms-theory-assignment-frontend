@@ -114,12 +114,10 @@ export default function ResponsiveDrawer(props: Props) {
       left: ["1"],
       right: ["2"],
     });
-    console.log(prevFunctionalDependency, "new updated array");
     setFunctionalDependencyArray(prevFunctionalDependency);
     setTrigger(!trigger);
   }
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
     setDependencyValue(event.target.value);
   };
   const onButtonPress = (dependencyState: string) => {
@@ -143,7 +141,6 @@ export default function ResponsiveDrawer(props: Props) {
     }
   };
   React.useEffect(() => {
-    console.log("triiger re render");
   }, [functionalDependencyArray]);
   function finalHandleSubmit(): void {
     let functoinalDependencyArray2 = functionalDependencyArray;
@@ -163,13 +160,12 @@ export default function ResponsiveDrawer(props: Props) {
       }
     }
     setFunctionalDependencyArray(functoinalDependencyArray2);
-    console.log("final handle submit", functoinalDependencyArray2);
   }
   const [kindOfQuery, setKindOfQuery] = React.useState<string>("");
   function GetDataForGivenForm(query: string) {
     setKindOfQuery(query);
     axios
-      .post("http://localhost:8000/api/v1/", {
+      .post("http://52.149.136.51:8000/api/v1/", {
         data: {
           query: query,
           attributes: dependency,
@@ -178,15 +174,13 @@ export default function ResponsiveDrawer(props: Props) {
         },
       })
       .then((res) => {
-        console.log(res.data.data.queryResult);
         setResponseFromServer(res.data.data.queryResult);
       })
       .catch((err) => {
-        console.log(err);
       });
   }
   React.useEffect(() => {
-    console.log(responseFromServer, "response from server object set");
+    console.log("Yaha kuch nhi milega bc")
   }, [responseFromServer]);
   return (
     <Box sx={{ display: "flex" }}>
@@ -325,7 +319,6 @@ export default function ResponsiveDrawer(props: Props) {
                         onDelete={() => {
                           const prevArray = [...dependency];
                           prevArray.splice(index, 1);
-                          console.log(prevArray);
                           setDependency(prevArray);
                         }}
                       />
@@ -422,11 +415,7 @@ export default function ResponsiveDrawer(props: Props) {
                             variant="contained"
                             onClick={() => {
                               setTrigger(!trigger);
-                              console.log(
-                                functionalDependencyArray,
-                                "finally after click"
-                              );
-                            }}
+                                                          }}
                           >
                             Click to submit Current Functional Dependency
                           </Button>
@@ -447,7 +436,6 @@ export default function ResponsiveDrawer(props: Props) {
                   <Button
                     variant="contained"
                     onClick={() => {
-                      console.log("oj");
                       finalHandleSubmit();
                     }}
                   >
@@ -455,7 +443,6 @@ export default function ResponsiveDrawer(props: Props) {
                   </Button>
                 </Grid>
               </Grid>
-              {console.log(responseFromServer, "response from server")}
               <DisplayNormalForms
                 normalFormData={responseFromServer}
                 query={kindOfQuery}

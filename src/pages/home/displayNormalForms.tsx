@@ -87,7 +87,6 @@ export function CenteredGrid(
   heading1: string,
   heading2: string
 ) {
-  console.log(completeData, "completeData");
   return (
     <Grid container spacing={2} justifyContent="center">
       <Grid item xs={12}>
@@ -152,7 +151,6 @@ function displayNormalForms(props: Props) {
     isNormalForm["is3NF"] = props.normalFormData.normal_form["3NF"];
     isNormalForm["isBCNF"] = props.normalFormData.normal_form["BCNF"];
   }
-  console.log(isNormalForm, "isNormalForm");
   return (
     <>
       <Typography

@@ -9,9 +9,5 @@ export default function Home() {
       Router.push("/home");
     }
   }, []);
-  return (
-    <>
-      <>Being Redirected {loading && <CircularProgress />} </>
-    </>
-  );
+  return <>Being Redirected {loading && <CircularProgress />} </>;
 }
