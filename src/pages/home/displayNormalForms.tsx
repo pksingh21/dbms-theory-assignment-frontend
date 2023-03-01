@@ -64,8 +64,8 @@ export function CenteredGrid2(
           <>
             {heading1} + {`Attribute set : `}
             <>
-              {listv1.map((elem) => (
-                <Chip label={elem} />
+              {listv1.map((elem,index) => (
+                <Chip label={elem} key={index} />
               ))}
             </>
           </>

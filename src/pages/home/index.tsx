@@ -40,7 +40,7 @@ type FunctiotnalDependency = { left: string[]; right: string[] };
 type KindsOfNormalForm = {
   "2NF": [boolean, number[]];
   "3NF": [boolean, number[]];
-  "BCNF": [boolean, number[]];
+  BCNF: [boolean, number[]];
 };
 type CompleteDataAboutNormalizedForm = {
   attributes: string[];
@@ -140,8 +140,7 @@ export default function ResponsiveDrawer(props: Props) {
       setDependencyValue("");
     }
   };
-  React.useEffect(() => {
-  }, [functionalDependencyArray]);
+  React.useEffect(() => {}, [functionalDependencyArray]);
   function finalHandleSubmit(): void {
     let functoinalDependencyArray2 = functionalDependencyArray;
     for (let i = 0; i < functoinalDependencyArray2.length; i++) {
@@ -176,14 +175,13 @@ export default function ResponsiveDrawer(props: Props) {
       .then((res) => {
         setResponseFromServer(res.data.data.queryResult);
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   }
   React.useEffect(() => {
-    console.log("Yaha kuch nhi milega bc")
+    console.log("Yaha kuch nhi milega bc");
   }, [responseFromServer]);
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", backgroundColor: "white" , height:"100vh" , minHeight:"100vh" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -415,7 +413,7 @@ export default function ResponsiveDrawer(props: Props) {
                             variant="contained"
                             onClick={() => {
                               setTrigger(!trigger);
-                                                          }}
+                            }}
                           >
                             Click to submit Current Functional Dependency
                           </Button>
